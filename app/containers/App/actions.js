@@ -9,7 +9,7 @@ export const postsLoaded = (posts) => ({
   posts,
 });
 
-export const postLoadingError = (error) => ({
+export const postsLoadingError = (error) => ({
   type: LOAD_POSTS_ERROR,
   error,
 });

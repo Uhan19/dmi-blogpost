@@ -16,7 +16,7 @@ const makeSelectError = () =>
   createSelector(selectGlobal, (globalState) => globalState.get('error'));
 
 const makeSelectPosts = () =>
-  createSelector(selectGlobal, (globalState) => globalState.getIn(['posts']));
+  createSelector(selectGlobal, (globalState) => globalState.getIn('posts'));
 
 export {
   selectGlobal,

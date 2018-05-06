@@ -53,4 +53,4 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: 'AddNewForm',
-})(connect(null)(AddPosts));
+})(AddPosts);

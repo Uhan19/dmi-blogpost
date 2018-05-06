@@ -10,8 +10,7 @@ const initialState = fromJS({
 function homeReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_POSTS:
-      const post = action.payload.data;
-      return { ...state, [posts]: posts };
+      return state;
     default:
       return state;
   }
