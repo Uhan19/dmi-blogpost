@@ -5,14 +5,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import messages from './messages';
 
-class PostsNew extends Component {
+class AddPosts extends Component {
   renderField(field) {
     // add style later for touched
     const {
       meta: { touched, error },
     } = field;
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`; // fix the class name later to correspond with style
     return (
-      <div>
+      <div className={className}>
         <label>{field.label}</label>
         <input className="form-control" type="text" {...field.input} />
         <div className="text-help">{touched ? error : ''}</div>
@@ -20,15 +21,21 @@ class PostsNew extends Component {
     );
   }
 
+  onSubmit(values) {
+    console.log('submitted');
+  }
+
   render() {
+    const { handleSubmit } = this.props;
     return (
       <div>
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
         <Link to="/">Back To Home</Link>
-        <form>
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field label="New Post" name="post" component={this.renderField} />
+          <button type="submit">submit</button>
         </form>
       </div>
     );
@@ -36,14 +43,14 @@ class PostsNew extends Component {
 }
 
 function validate(values) {
-  const errors = {};
-  if (!values.posts) {
-    errors.title = 'Please enter a post!';
+  const error = {};
+  if (!values.post) {
+    error.post = 'Please enter a post!';
   }
-  return errors;
+  return error;
 }
 
 export default reduxForm({
   validate,
-  form: 'PostsNewForm',
-})(connect(null)(PostsNew));
+  form: 'AddNewForm',
+})(connect(null)(AddPosts));
