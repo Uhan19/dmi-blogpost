@@ -11,4 +11,4 @@ const posts = {
   10: 'sample string 10',
 };
 
-export default posts;
+module.exports = posts;
