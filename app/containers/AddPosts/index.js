@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field, reduxForm } from 'redux-form/immutable';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { createPosts } from './actions';
+import Form from './Form';
 import Input from './Input';
 import ErrorDiv from './Error';
 import Button from './Button';
+import CancelLink from './Cancel';
 import messages from './messages';
 
 class AddPosts extends Component {
@@ -44,11 +45,11 @@ class AddPosts extends Component {
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
-        <Link to="/">Back To Home</Link>
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field name="post" component={this.renderField} />
           <Button type="submit">submit</Button>
-        </form>
+          <CancelLink to="/">Cancel</CancelLink>
+        </Form>
       </div>
     );
   }
