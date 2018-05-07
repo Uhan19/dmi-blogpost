@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createPosts } from './actions';
 import Input from './Input';
+import ErrorDiv from './Error';
+import Button from './Button';
 import messages from './messages';
 
 class AddPosts extends Component {
@@ -30,7 +32,7 @@ class AddPosts extends Component {
           type="text"
           {...field.input}
         />
-        <div className="text-help">{touched ? error : ''}</div>
+        <ErrorDiv className="text-help">{touched ? error : ''}</ErrorDiv>
       </div>
     );
   }
@@ -44,8 +46,8 @@ class AddPosts extends Component {
         </h1>
         <Link to="/">Back To Home</Link>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <Field label="New Post" name="post" component={this.renderField} />
-          <button type="submit">submit</button>
+          <Field name="post" component={this.renderField} />
+          <Button type="submit">submit</Button>
         </form>
       </div>
     );
