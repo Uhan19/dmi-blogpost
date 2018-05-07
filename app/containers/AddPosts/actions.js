@@ -1,5 +1,5 @@
-import { CREATE_POSTS, CHANGE_INPUT } from './constants';
 import axios from 'axios';
+import { CREATE_POSTS } from './constants';
 
 /**
  * Changes the input field of the form
@@ -9,9 +9,7 @@ import axios from 'axios';
  * @return {object}    An action object with a type of CREATE_POSTS
  */
 export function createPosts(input, callback) {
-  const request = axios({ method: 'post', url: '/', data: input }).then(() =>
-    callback()
-  );
+  axios({ method: 'post', url: '/', data: input }).then(() => callback());
   return {
     type: CREATE_POSTS,
     payload: input,

@@ -9,8 +9,6 @@ const initialState = fromJS({
 
 function addPostsReducer(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_INPUT:
-      return state;
     case CREATE_POSTS:
       return state;
     default:
