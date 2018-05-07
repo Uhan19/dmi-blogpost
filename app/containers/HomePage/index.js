@@ -41,7 +41,7 @@ export class HomePage extends PureComponent {
 
   renderPosts() {
     return _.map(this.props.posts, (post) => (
-      <li key={post._id}>{post.post}</li>
+      <Li key={post._id}>{post.post}</Li>
     ));
   }
 
