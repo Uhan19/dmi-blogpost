@@ -35,7 +35,12 @@ export class HomePage extends PureComponent {
   }
 
   renderPosts() {
-    return _.map(this.props.posts, (post) => <li key={post}>{post}</li>); // change the key later
+    // const posts = this.props.posts;
+    // return _.map(this.props.posts, (post) => <li key={post}>{post}</li>); // change the key later
+    // return this.props.posts.map((post) => <li key={post.id}>{post.post}</li>);
+    return _.map(this.props.posts, (post) => (
+      <li key={post._id}>{post.post}</li>
+    ));
   }
 
   render() {

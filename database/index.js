@@ -5,8 +5,7 @@ mongoose.connect('mongodb://localhost/chatbox');
 const Schema = mongoose.Schema;
 
 const chatBoxSchema = new Schema({
-  id: Number,
-  posts: String,
+  post: String,
 });
 
 const ChatBox = mongoose.model('ChatBox', chatBoxSchema);
