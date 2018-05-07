@@ -10,7 +10,6 @@ export function* getPosts() {
     const posts = yield call(request, requestURL);
     yield put(postsLoaded(posts));
   } catch (err) {
-    console.log(err);
     yield put(postsLoadingError(err));
   }
 }

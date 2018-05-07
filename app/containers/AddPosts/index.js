@@ -55,7 +55,6 @@ class AddPosts extends Component {
 AddPosts.propTypes = {
   createPosts: PropTypes.func,
   handleSubmit: PropTypes.func,
-  onSubmit: PropTypes.func,
   history: PropTypes.object,
 };
 

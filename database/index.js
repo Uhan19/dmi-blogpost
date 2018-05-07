@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
 mongoose.connect('mongodb://localhost/chatbox');
 
 const Schema = mongoose.Schema;

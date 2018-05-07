@@ -40,7 +40,7 @@ describe('getPosts Saga', () => {
 });
 
 describe('postsDataSaga Saga', () => {
-  const postsSaga = postsData();
+  const postsDataSaga = postsData();
 
   it('should start task to watch for LOAD_POSTS action', () => {
     const takeLatestDescriptor = postsDataSaga.next().value;

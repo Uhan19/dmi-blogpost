@@ -10,6 +10,7 @@
  */
 
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -29,15 +30,11 @@ import reducer from './reducer';
 import saga from './saga';
 
 export class HomePage extends PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.onSubmit();
   }
 
   renderPosts() {
-    // const posts = this.props.posts;
-    // return _.map(this.props.posts, (post) => <li key={post}>{post}</li>); // change the key later
-    // return this.props.posts.map((post) => <li key={post.id}>{post.post}</li>);
     return _.map(this.props.posts, (post) => (
       <li key={post._id}>{post.post}</li>
     ));
@@ -56,6 +53,11 @@ export class HomePage extends PureComponent {
     );
   }
 }
+
+HomePage.propTypes = {
+  onSubmit: PropTypes.func,
+  posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+};
 
 export function mapDispatchToProps(dispatch) {
   return {
