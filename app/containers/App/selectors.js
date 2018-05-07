@@ -18,10 +18,14 @@ const makeSelectError = () =>
 const makeSelectPosts = () =>
   createSelector(selectGlobal, (globalState) => globalState.getIn('posts'));
 
+const makeSelectInput = () =>
+  createSelector(selectGlobal, (globalState) => globalState.getIn('input'));
+
 export {
   selectGlobal,
   makeSelectLoading,
   makeSelectError,
   makeSelectPosts,
+  makeSelectInput,
   makeSelectLocation,
 };

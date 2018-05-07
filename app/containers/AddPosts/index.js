@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Field, reduxForm } from 'redux-form/immutable';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
+import { makeSelectInput } from './selectors';
+import { createPosts } from './actions';
+// import { changeInput } from './actions';
+import Input from './Input';
+import reducer from './reducer';
+import saga from './saga';
 import messages from './messages';
 
 class AddPosts extends Component {
@@ -15,7 +25,7 @@ class AddPosts extends Component {
     return (
       <div className={className}>
         <label>{field.label}</label>
-        <input
+        <Input
           className="form-control"
           placeholder="type message here"
           type="text"
@@ -27,7 +37,10 @@ class AddPosts extends Component {
   }
 
   onSubmit(values) {
-    console.log('submitted');
+    this.props.createPosts(values, () => {
+      this.props.history.push('/');
+    });
+    console.log('clicked');
   }
 
   render() {
@@ -56,6 +69,26 @@ function validate(values) {
 }
 
 export default reduxForm({
-  validate,
-  form: 'AddNewForm',
-})(AddPosts);
+  validate, // same as validate: validate
+  form: 'AddNewPosts', // value has to be unique
+})(connect(null, { createPosts })(AddPosts));
+
+// export function mapDispatchToProps(dispatch) {
+//   return {
+//     onChangeInput: (evt) => dispatch(changeInput(evt.target.value)),
+//     onSubmitForm: () => {
+//       dispatch(createPosts());
+//     },
+//   };
+// }
+
+// const mapStateToProps = createStructuredSelector({
+//   input: makeSelectInput(),
+// });
+
+// const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+// const withReducer = injectReducer({ key: 'addPost', reducer });
+// const withSaga = injectSaga({ key: 'addPost', saga });
+
+// export default compose(withReducer, withSaga, withConnect)(AddPosts);

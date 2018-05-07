@@ -8,7 +8,6 @@ export function* getPosts() {
   const requestURL = '/';
   try {
     const posts = yield call(request, requestURL);
-    console.log(posts);
     yield put(postsLoaded(posts));
   } catch (err) {
     console.log(err);
