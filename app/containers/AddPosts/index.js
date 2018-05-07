@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field, reduxForm } from 'redux-form/immutable';
 import { connect } from 'react-redux';
+import H1 from 'components/H1';
 import { createPosts } from './actions';
 import Form from './Form';
 import Input from './Input';
@@ -42,9 +43,9 @@ class AddPosts extends Component {
     const { handleSubmit } = this.props;
     return (
       <div>
-        <h1>
+        <H1>
           <FormattedMessage {...messages.header} />
-        </h1>
+        </H1>
         <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field name="post" component={this.renderField} />
           <Button type="submit">submit</Button>

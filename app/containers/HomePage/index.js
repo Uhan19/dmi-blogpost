@@ -15,7 +15,6 @@ import _ from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -24,6 +23,12 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
+import H1 from 'components/H1';
+import H3 from 'components/H3';
+import Ul from 'components/Ul';
+import Li from 'components/Li';
+import Center from 'components/Center';
+import StyledLink from './StyledLink';
 import { loadPosts } from '../App/actions';
 import messages from './messages';
 import reducer from './reducer';
@@ -43,12 +48,14 @@ export class HomePage extends PureComponent {
   render() {
     return (
       <div>
-        <h1>
+        <H1>
           <FormattedMessage {...messages.header} />
-        </h1>
-        <Link to="/posts/new">Add a Post</Link>
-        <h3>Posts</h3>
-        <ul>{this.renderPosts()}</ul>
+        </H1>
+        <Center>
+          <StyledLink to="/posts/new">Add a Post</StyledLink>
+        </Center>
+        <H3>Posts</H3>
+        <Ul>{this.renderPosts()}</Ul>
       </div>
     );
   }
