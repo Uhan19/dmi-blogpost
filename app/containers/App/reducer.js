@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-
+import { reducer as formReducer } from 'redux-form';
 import { LOAD_POSTS_SUCCESS, LOAD_POSTS, LOAD_POSTS_ERROR } from './constants';
 
 // The initial state of the App
@@ -7,6 +7,7 @@ const initialState = fromJS({
   loading: false,
   error: false,
   posts: false,
+  form: formReducer,
 });
 
 function appReducer(state = initialState, action) {

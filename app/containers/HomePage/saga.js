@@ -6,8 +6,6 @@ import request from 'utils/request';
 
 export function* getPosts() {
   const requestURL = '/';
-  console.log('getPosts!');
-  // const fetchData = (url) => axios.get(url);
   try {
     const posts = yield call(request, requestURL);
     console.log(posts);

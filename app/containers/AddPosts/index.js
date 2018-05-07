@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form/immutable';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import messages from './messages';
@@ -15,7 +15,12 @@ class AddPosts extends Component {
     return (
       <div className={className}>
         <label>{field.label}</label>
-        <input className="form-control" type="text" {...field.input} />
+        <input
+          className="form-control"
+          placeholder="type message here"
+          type="text"
+          {...field.input}
+        />
         <div className="text-help">{touched ? error : ''}</div>
       </div>
     );
